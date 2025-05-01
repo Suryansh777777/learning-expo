@@ -3,8 +3,24 @@ import { Tabs } from "expo-router";
 import { Text } from "react-native";
 //By this we automatically get the tab bar, all components inside (tabs) will be rendered inside the tab bar
 export default function TabLayout() {
+  // beside icon is set for tablets and below icon for mobile
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarLabelPosition: "beside-icon",
+        tabBarShowLabel: false, //by default it is true
+        headerTitle: "Recipies App", //same across all tabs
+        tabBarActiveTintColor: "#22d3ee",
+        tabBarInactiveTintColor: "#94a3b8",
+        tabBarStyle: {
+          backgroundColor: "#0f172a",
+        },
+        headerStyle: {
+          backgroundColor: "#0f172a",
+        },
+        headerTintColor: "#f8fafc",
+      }}
+    >
       <Tabs.Screen
         name="home"
         options={{
@@ -12,6 +28,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <FontAwesome name="home" color={color}></FontAwesome>
           ),
+          title: "Home",
         }}
       />
       <Tabs.Screen
@@ -21,6 +38,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <FontAwesome name="search" color={color}></FontAwesome>
           ),
+          title: "Explore",
         }}
       />
       <Tabs.Screen
@@ -31,6 +49,7 @@ export default function TabLayout() {
             <FontAwesome name="user" color={color}></FontAwesome>
           ),
           tabBarBadge: 3,
+          title: "Profile",
         }}
       />
     </Tabs>
